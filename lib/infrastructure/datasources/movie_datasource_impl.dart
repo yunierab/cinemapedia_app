@@ -26,6 +26,7 @@ class MoviedbDatasourceImpl extends MoviesDatasource {
             ) //Con esto solo mostrare las peliculas que tengan un posterPath
             .map((e) => MovieMapper.movieDbToEntity(e))
             .toList();
+
     return movieList;
   }
 }
