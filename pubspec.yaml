@@ -12,6 +12,7 @@ dependencies:
   go_router: ^15.1.2
   flutter_dotenv: ^5.2.1 #Para leer variables de entorno
   dio: ^4.0.6 #Para peticiones http
+  flutter_riverpod: ^2.6.1 #Para manejar el estado
 
 dev_dependencies:
   flutter_test:

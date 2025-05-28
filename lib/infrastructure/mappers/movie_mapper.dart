@@ -18,7 +18,7 @@ class MovieMapper {
       posterPath:
           (movieDb.posterPath != "")
               ? "https://image.tmdb.org/t/p/w500${movieDb.posterPath}"
-              : 'https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg',
+              : 'No poster',
       releaseDate: movieDb.releaseDate,
       title: movieDb.title,
       video: movieDb.video,
