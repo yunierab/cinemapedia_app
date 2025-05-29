@@ -6,10 +6,10 @@ class AppTheme {
   ThemeData getTheme() {
     return ThemeData(
       useMaterial3: true,
-      colorSchemeSeed: Colors.deepPurpleAccent,
+      colorSchemeSeed: Colors.blue,
       appBarTheme: AppBarTheme(
         centerTitle: true,
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ), //esto controla todos los appBar de mi aplicacion
     );
