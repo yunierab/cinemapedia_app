@@ -1,4 +1,3 @@
-import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/presentation/providers/movies/movies_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,7 +17,7 @@ class HomeScreen extends ConsumerWidget {
 }
 
 class _HomeView extends ConsumerStatefulWidget {
-  const _HomeView({super.key});
+  const _HomeView();
 
   @override
   ConsumerState<_HomeView> createState() => _HomeViewState();
@@ -33,8 +32,13 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    //final nowPlayingProvider = ref.read(nowPlayingMoviesProvider);
-
-    return Placeholder();
+    final nowPlayingProvider = ref.watch(nowPlayingMoviesProvider);
+    return ListView.builder(
+      itemCount: nowPlayingProvider.length,
+      itemBuilder: (context, index) {
+        final movie = nowPlayingProvider[index];
+        return ListTile(title: Text(movie.title));
+      },
+    );
   }
 }
