@@ -14,6 +14,7 @@ dependencies:
   dio: ^4.0.6 #Para peticiones http
   flutter_riverpod: ^2.6.1 #Para manejar el estado
   card_swiper: ^3.0.1 #Para hacer el carrusel
+  animate_do: ^3.0.2 #Para animaciones
 
 dev_dependencies:
   flutter_test:
