@@ -1,5 +1,6 @@
 import 'package:cinemapedia/presentation/providers/movies/movies_providers.dart';
 import 'package:cinemapedia/presentation/providers/movies/movies_slideshow_provider.dart';
+import 'package:cinemapedia/presentation/widgets/movies/movies_horizontal_listview.dart';
 import 'package:cinemapedia/presentation/widgets/movies/movies_slideshow.dart';
 import 'package:cinemapedia/presentation/widgets/shared/custom_appbar.dart';
 import 'package:cinemapedia/presentation/widgets/shared/custom_bottom_navigationbar.dart';
@@ -40,7 +41,15 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final nowPlayingProvider = ref.watch(nowPlayingMoviesProvider);
     final moviesSlideProvider = ref.watch(moviesSlideShowProvider);
     return Column(
-      children: [CustomAppbar(), MoviesSlideShow(movies: moviesSlideProvider)],
+      children: [
+        CustomAppbar(),
+        MoviesSlideShow(movies: moviesSlideProvider),
+        MoviesHorizontalListview(
+          movies: moviesSlideProvider,
+          title: "En cines",
+          subtitle: "Lunes 20",
+        ),
+      ],
     );
   }
 }
