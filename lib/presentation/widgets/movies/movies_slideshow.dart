@@ -59,9 +59,7 @@ class _Slide extends StatelessWidget {
             fit: BoxFit.cover,
             loadingBuilder: (context, child, loadingProgress) {
               if (loadingProgress != null) {
-                return const DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.black12),
-                );
+                return CircularProgressIndicator(strokeWidth: 2);
               }
               return FadeIn(child: child);
             },

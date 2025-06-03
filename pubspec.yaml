@@ -15,7 +15,8 @@ dependencies:
   flutter_riverpod: ^2.6.1 #Para manejar el estado
   card_swiper: ^3.0.1 #Para hacer el carrusel
   animate_do: ^3.0.2 #Para animaciones
-
+  intl: ^0.20.2 #Para formatear fechas
+ 
 dev_dependencies:
   flutter_test:
     sdk: flutter
