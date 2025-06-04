@@ -116,23 +116,26 @@ class _Slide extends StatelessWidget {
           //Rating
           Row(
             children: [
-              const Icon(
+              Icon(
                 Icons.star_half_outlined,
                 size: 15,
-                color: Colors.amber,
+                color: Colors.yellow[800],
               ),
               const SizedBox(width: 5),
               Text(
-                '${movie.voteAverage}',
+                HumanFormats.humanReadableNumber(movie.voteAverage),
                 style: textStyle.bodyMedium?.copyWith(
-                  color: color.primary,
+                  color: Colors.yellow[800],
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(width: 68),
               Text(
                 HumanFormats.humanReadableNumber(movie.popularity),
-                style: textStyle.bodySmall,
+                style: textStyle.bodySmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: color.primary,
+                ),
               ),
             ],
           ),
