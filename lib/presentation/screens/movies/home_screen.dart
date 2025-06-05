@@ -54,7 +54,6 @@ class _HomeViewState extends ConsumerState<_HomeView> {
           delegate: SliverChildBuilderDelegate((context, index) {
             return Column(
               children: [
-                //CustomAppbar(),
                 MoviesSlideShow(movies: moviesSlideProvider),
                 MoviesHorizontalListview(
                   movies: nowPlayingProvider,
