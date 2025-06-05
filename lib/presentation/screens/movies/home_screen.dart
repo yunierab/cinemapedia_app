@@ -34,12 +34,14 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   void initState() {
     super.initState();
     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+    ref.read(popularMoviesProvider.notifier).loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
     final nowPlayingProvider = ref.watch(nowPlayingMoviesProvider);
     final moviesSlideProvider = ref.watch(moviesSlideShowProvider);
+    final popularProvider = ref.watch(popularMoviesProvider);
     return CustomScrollView(
       //Esto se usa para poder crear un AppBar que se haga visible en cuanto hacemos scroll hacia arriba
       slivers: [
@@ -62,12 +64,26 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
                   },
                 ),
-
-                //Borrar
                 MoviesHorizontalListview(
                   movies: nowPlayingProvider,
-                  title: "Mas populares",
-                  subtitle: "Proximamente",
+                  title: "Proximamente",
+                  subtitle: "En este mes",
+                  loadNextPage: () {
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                  },
+                ),
+                MoviesHorizontalListview(
+                  movies: popularProvider,
+                  title: "Populares",
+                  //subtitle: "En este mes",
+                  loadNextPage: () {
+                    ref.read(popularMoviesProvider.notifier).loadNextPage();
+                  },
+                ),
+                MoviesHorizontalListview(
+                  movies: nowPlayingProvider,
+                  title: "Mejor calificadas",
+                  subtitle: "Desde siempre",
                   loadNextPage: () {
                     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
                   },
