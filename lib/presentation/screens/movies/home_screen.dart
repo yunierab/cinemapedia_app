@@ -40,17 +40,43 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   Widget build(BuildContext context) {
     final nowPlayingProvider = ref.watch(nowPlayingMoviesProvider);
     final moviesSlideProvider = ref.watch(moviesSlideShowProvider);
-    return Column(
-      children: [
-        CustomAppbar(),
-        MoviesSlideShow(movies: moviesSlideProvider),
-        MoviesHorizontalListview(
-          movies: nowPlayingProvider,
-          title: "En cines",
-          subtitle: "Lunes 20",
-          loadNextPage: () {
-            ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
-          },
+    return CustomScrollView(
+      //Esto se usa para poder crear un AppBar que se haga visible en cuanto hacemos scroll hacia arriba
+      slivers: [
+        SliverAppBar(
+          floating: true,
+          backgroundColor: Colors.white,
+          flexibleSpace: CustomAppbar(),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            return Column(
+              children: [
+                //CustomAppbar(),
+                MoviesSlideShow(movies: moviesSlideProvider),
+                MoviesHorizontalListview(
+                  movies: nowPlayingProvider,
+                  title: "En cines",
+                  subtitle: "Lunes 20",
+                  loadNextPage: () {
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                  },
+                ),
+
+                //Borrar
+                MoviesHorizontalListview(
+                  movies: nowPlayingProvider,
+                  title: "Mas populares",
+                  subtitle: "Proximamente",
+                  loadNextPage: () {
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                  },
+                ),
+
+                SizedBox(height: 10),
+              ],
+            );
+          }, childCount: 1),
         ),
       ],
     );
