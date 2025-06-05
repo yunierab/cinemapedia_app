@@ -14,6 +14,6 @@ class MoviedbRepositoryImpl extends MovieRepository {
 
   @override
   Future<List<Movie>> getPopular({int page = 1}) {
-    throw moviesDatasource.getPopular(page: page);
+    return moviesDatasource.getPopular(page: page);
   }
 }
