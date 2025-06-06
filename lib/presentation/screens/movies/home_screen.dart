@@ -1,9 +1,11 @@
+import 'package:cinemapedia/presentation/providers/movies/initial_loading_provider.dart';
 import 'package:cinemapedia/presentation/providers/movies/movies_providers.dart';
 import 'package:cinemapedia/presentation/providers/movies/movies_slideshow_provider.dart';
 import 'package:cinemapedia/presentation/widgets/movies/movies_horizontal_listview.dart';
 import 'package:cinemapedia/presentation/widgets/movies/movies_slideshow.dart';
 import 'package:cinemapedia/presentation/widgets/shared/custom_appbar.dart';
 import 'package:cinemapedia/presentation/widgets/shared/custom_bottom_navigationbar.dart';
+import 'package:cinemapedia/presentation/widgets/shared/full_screen_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -46,7 +48,11 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final popularProvider = ref.watch(popularMoviesProvider);
     final upcomingProvider = ref.watch(upcomingMoviesProvider);
     final topRatedProvider = ref.watch(topRatedMoviesProvider);
+    final initialLoading = ref.watch(initialLoadingProvider);
 
+    if (initialLoading) {
+      return const FullScreenLoader();
+    }
     return CustomScrollView(
       //Esto se usa para poder crear un AppBar que se haga visible en cuanto hacemos scroll hacia arriba
       slivers: [
