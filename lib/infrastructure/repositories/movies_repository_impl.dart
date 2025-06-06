@@ -20,4 +20,8 @@ class MoviedbRepositoryImpl extends MovieRepository {
   Future<List<Movie>> getUpcoming({int page = 1}) {
     return moviesDatasource.getUpcoming(page: page);
   }
+
+  Future<List<Movie>> getTopRated({int page = 1}) {
+    return moviesDatasource.getTopRated(page: page);
+  }
 }
