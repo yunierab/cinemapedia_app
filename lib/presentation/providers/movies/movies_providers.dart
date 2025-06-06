@@ -16,6 +16,12 @@ final popularMoviesProvider =
       return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
     });
 
+final upcomingMoviesProvider =
+    StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
+      final fetchMoreMovies = ref.watch(moviesRepositoryProvider).getUpcoming;
+      return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
+    });
+
 class MoviesNotifier extends StateNotifier<List<Movie>> {
   int currentPage = 0;
   bool isLoading = false;

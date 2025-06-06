@@ -35,6 +35,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     super.initState();
     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
     ref.read(popularMoviesProvider.notifier).loadNextPage();
+    ref.read(upcomingMoviesProvider.notifier).loadNextPage();
   }
 
   @override
@@ -42,6 +43,8 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final nowPlayingProvider = ref.watch(nowPlayingMoviesProvider);
     final moviesSlideProvider = ref.watch(moviesSlideShowProvider);
     final popularProvider = ref.watch(popularMoviesProvider);
+    final upcomingProvider = ref.watch(upcomingMoviesProvider);
+
     return CustomScrollView(
       //Esto se usa para poder crear un AppBar que se haga visible en cuanto hacemos scroll hacia arriba
       slivers: [
@@ -64,11 +67,11 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                   },
                 ),
                 MoviesHorizontalListview(
-                  movies: nowPlayingProvider,
+                  movies: upcomingProvider,
                   title: "Proximamente",
                   subtitle: "En este mes",
                   loadNextPage: () {
-                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                    ref.read(upcomingMoviesProvider.notifier).loadNextPage();
                   },
                 ),
                 MoviesHorizontalListview(
