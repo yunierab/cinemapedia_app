@@ -62,17 +62,20 @@ class _CustomSliverAppBar extends StatelessWidget {
       foregroundColor: Colors.white,
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        /*
-        title: Text(
-          movie.title,
-          style: const TextStyle(fontSize: 20, color: Colors.white),
-          textAlign: TextAlign.start,
-        ),*/
         background: Stack(
           children: [
             //Esta es la imagen a mostrar
             SizedBox.expand(
-              child: Image.network(movie.posterPath, fit: BoxFit.cover),
+              child: Image.network(
+                movie.posterPath,
+                fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress != null) {
+                    return SizedBox();
+                  }
+                  return FadeIn(child: child);
+                },
+              ),
             ),
             //Esto es un gradiente para que se vea mejor la imagen de fondo en la aprte inferior o por si se quiere poner un texto encima de ella
             SizedBox.expand(
