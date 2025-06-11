@@ -19,7 +19,7 @@ class MovieMapper {
       posterPath:
           (movieDb.posterPath != "")
               ? "https://image.tmdb.org/t/p/w500${movieDb.posterPath}"
-              : 'No poster',
+              : 'https://www.content.numetro.co.za/ui_images/no_poster.png',
       releaseDate: movieDb.releaseDate,
       title: movieDb.title,
       video: movieDb.video,

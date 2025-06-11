@@ -76,7 +76,10 @@ class _MovieItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyles = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
+    final size =
+        MediaQuery.of(
+          context,
+        ).size; //Esto es para trabajar con las dimensiones de la pantalla
 
     return GestureDetector(
       onTap: () {
