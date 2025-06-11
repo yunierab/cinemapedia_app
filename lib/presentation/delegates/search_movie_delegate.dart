@@ -59,7 +59,12 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
           itemCount: movies.length,
           itemBuilder: (context, index) {
             final movie = movies[index];
-            return _MovieItem(movie: movie);
+            return _MovieItem(
+              movie: movie,
+              onMovieSelected: (context, movie) {
+                close(context, movie);
+              },
+            );
           },
         );
       },
@@ -69,9 +74,9 @@ class SearchMovieDelegate extends SearchDelegate<Movie?> {
 
 class _MovieItem extends StatelessWidget {
   final Movie movie;
-  //final Function onMovieSelected;
+  final Function onMovieSelected;
 
-  const _MovieItem({required this.movie});
+  const _MovieItem({required this.movie, required this.onMovieSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +88,8 @@ class _MovieItem extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        //onMovieSelected(context, movie);
+        //context.push('/movie/${movie.id}');
+        onMovieSelected(context, movie);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
