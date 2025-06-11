@@ -1,11 +1,13 @@
 import 'package:cinemapedia/presentation/delegates/search_movie_delegate.dart';
+import 'package:cinemapedia/presentation/providers/movies/movies_repository_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomAppbar extends StatelessWidget {
+class CustomAppbar extends ConsumerWidget {
   const CustomAppbar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     final titleStyle = Theme.of(context).textTheme.titleMedium;
     return SafeArea(
@@ -22,8 +24,14 @@ class CustomAppbar extends StatelessWidget {
               Spacer(), //Con esto muevo lo de abajo hacia la parte mas a la derecha del Row
               IconButton(
                 onPressed: () {
+                  final moviesRepository = ref.read(moviesRepositoryProvider);
                   //Esta funcion la trae incorporada flutter para el trabajo con las busquedas
-                  showSearch(context: context, delegate: SearchMovieDelegate());
+                  showSearch(
+                    context: context,
+                    delegate: SearchMovieDelegate(
+                      searchMovies: moviesRepository.searchMovies,
+                    ),
+                  );
                 },
                 icon: Icon(Icons.search, color: colors.primary),
               ),
