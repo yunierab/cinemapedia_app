@@ -1,5 +1,6 @@
 import 'package:cinemapedia/presentation/screens/movies/home_screen.dart';
 import 'package:cinemapedia/presentation/screens/movies/movie_screen.dart';
+import 'package:cinemapedia/presentation/views/home_views/categories_view.dart';
 import 'package:cinemapedia/presentation/views/home_views/favorite_view.dart';
 import 'package:cinemapedia/presentation/views/home_views/home_view.dart';
 import 'package:go_router/go_router.dart';
@@ -33,6 +34,12 @@ final appRouter = GoRouter(
           path: '/favorites',
           builder: (context, state) {
             return FavoriteView();
+          },
+        ),
+        GoRoute(
+          path: '/categories',
+          builder: (context, state) {
+            return CategoriesView();
           },
         ),
       ],
