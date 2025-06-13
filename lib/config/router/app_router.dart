@@ -3,11 +3,15 @@ import 'package:cinemapedia/presentation/screens/movies/movie_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
+  initialLocation: '/home/0',
   routes: [
     GoRoute(
-      path: '/',
+      path: '/home/:page',
       name: HomeScreen.name,
-      builder: (context, state) => HomeScreen(),
+      builder: (context, state) {
+        final page = int.parse(state.pathParameters['page'] ?? '0');
+        return HomeScreen(pageIndex: page);
+      },
       routes: [
         //Con esto declaro la ruta como hija para que me pueda el botón atras regresar al home
         GoRoute(
@@ -20,5 +24,7 @@ final appRouter = GoRouter(
         ),
       ],
     ),
+
+    GoRoute(path: '/', redirect: (_, _) => '/home/0'),
   ],
 );
