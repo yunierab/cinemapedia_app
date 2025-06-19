@@ -84,42 +84,24 @@ class _CustomSliverAppBar extends StatelessWidget {
               ),
             ),
             //Este gradiente es para que se vea el icono de favorito en la parte superior
-            SizedBox.expand(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    stops: [0.0, 0.2],
-                    colors: [Colors.black54, Colors.transparent],
-                  ),
-                ),
-              ),
+            _CustomGradient(
+              begin: Alignment.topRight,
+              stops: [0.0, 0.2],
+              colors: [Colors.black54, Colors.transparent],
+              end: Alignment.bottomLeft,
             ),
             //Esto es un gradiente para que se vea mejor la imagen de fondo en la aprte inferior o por si se quiere poner un texto encima de ella
-            SizedBox.expand(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: [0.7, 1.0],
-                    colors: [Colors.transparent, Colors.black87],
-                  ),
-                ),
-              ),
+            _CustomGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.7, 1.0],
+              colors: [Colors.transparent, Colors.black87],
             ),
             //Esto es un gradiente para que se vea la flecha de atras en las imagenes blancas
-            const SizedBox.expand(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    stops: [0.0, 0.3],
-                    colors: [Colors.black87, Colors.transparent],
-                  ),
-                ),
-              ),
+            _CustomGradient(
+              begin: Alignment.topLeft,
+              stops: [0.0, 0.3],
+              colors: [Colors.black87, Colors.transparent],
             ),
           ],
         ),
@@ -254,6 +236,35 @@ class _ActorsByMovie extends ConsumerWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class _CustomGradient extends StatelessWidget {
+  final AlignmentGeometry begin;
+  final AlignmentGeometry? end;
+  final List<double> stops;
+  final List<Color> colors;
+  const _CustomGradient({
+    required this.begin,
+    this.end,
+    required this.stops,
+    required this.colors,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox.expand(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: begin,
+            end: end ?? Alignment.centerRight,
+            stops: stops,
+            colors: colors,
+          ),
+        ),
       ),
     );
   }
