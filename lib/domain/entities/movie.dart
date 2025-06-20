@@ -1,4 +1,11 @@
+import 'package:isar/isar.dart';
+
+part 'movie.g.dart'; //Esto es para la BD Isar
+
+@collection
 class Movie {
+  Id? idIsar; //Esto es para la BD Isar
+
   final bool adult;
   final String backdropPath;
   final List<String> genreIds;

@@ -16,11 +16,15 @@ dependencies:
   card_swiper: ^3.0.1 #Para hacer el carrusel
   animate_do: ^3.0.2 #Para animaciones
   intl: ^0.20.2 #Para formatear fechas
+  isar: ^3.1.0+1 #Para manejar la base de datos
+  isar_flutter_libs: ^3.1.0+1
  
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  isar_generator: ^3.1.0+1 #Para generar la base de datos pero solo en ambiente desarrollo
+  build_runner: ^2.4.13 #Para generar la base de datos
 
 flutter:
   uses-material-design: true

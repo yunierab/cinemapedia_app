@@ -1,4 +1,11 @@
+import 'package:isar/isar.dart';
+
+part 'actor.g.dart'; //Esto es para la BD Isar
+
+@collection
 class Actor {
+  Id? idIsar;
+
   final int id;
   final String name;
   final String profilePath;
