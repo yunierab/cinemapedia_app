@@ -2,6 +2,7 @@ import 'package:cinemapedia/domain/datasources/local_storage_datasource.dart';
 import 'package:cinemapedia/domain/entities/actor.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
 
 class IsarDatasource extends LocalStorageDatasource {
   late Future<Isar> db; //Para la BD Isar
@@ -12,11 +13,12 @@ class IsarDatasource extends LocalStorageDatasource {
 
   Future<Isar> openDB() async {
     if (Isar.instanceNames.isEmpty) {
+      final dir = await getApplicationDocumentsDirectory();
       return await Isar.open(
         [MovieSchema, ActorSchema],
         inspector: true,
-        directory:
-            '/storage/emulated/0/Android/data/com.example.cinemapedia/files',
+        directory: dir.path,
+        //'/storage/emulated/0/Android/data/com.example.cinemapedia/files',
       );
     }
     return Future.value(Isar.getInstance());
